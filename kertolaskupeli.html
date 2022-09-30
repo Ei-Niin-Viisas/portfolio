@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="tyylit.css">
+		<title>Kertolaskupeli</title>
+	</head>
+
+	<body onload="tulosta();">
+		<form>
+            <div id="tulosta"></div>
+			<label for="luku">Vastaus (1-100):</label>
+			<input type="number" id="luku" name="luku"
+				min="1" max="100" value="1">
+			<input
+				onclick="tarkista(document.getElementById('luku').value);"
+				type="button" id="nappi" name="nappi" value="Näytä">
+		</form>
+
+        <p id="vastaus">Vastaus tulle tähän</p>
+		
+		<script >
+            let vastaus = 0;
+
+
+            function tulosta() {
+            
+                let kysymys;
+                let luku = Math.floor(Math.random() * 10 + 1);
+                let kertoja = Math.floor(Math.random() * 10 +1);
+            
+            
+                kysymys = "<p>" + "Mitä on " + kertoja + " x " + luku + "?</p>\n" + "<table>\n";
+            
+                kysymys = kysymys + "</table>";
+                document.getElementById('tulosta').innerHTML = kysymys;
+                vastaus = luku * kertoja;
+            }
+            
+            function tarkista(arvaus) {
+            
+                if (vastaus == arvaus){
+                    document.getElementById('vastaus').innerHTML = "<p> Oikein :) <br> Uusi lasku yllä </p>\n"
+                } else {
+                    document.getElementById('vastaus').innerHTML = "<p> Väärin :( Oikea vastaus oli " + vastaus + " <br> Uusi lasku yllä </p>\n"
+                }
+                tulosta()
+            } 
+            </script>
+	</body>
+</html>
